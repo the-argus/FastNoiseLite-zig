@@ -15,6 +15,6 @@ pub fn build(b: *std.Build) void {
         .flags = &.{"-fno-sanitize=undefined"},
     });
     lib.linkLibC();
-    lib.installHeader("FastNoiseLite.h", "FastNoiseLite.h");
+    lib.installHeader(b.path("FastNoiseLite.h"), "FastNoiseLite.h");
     b.installArtifact(lib);
 }
