@@ -10,7 +10,10 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    lib.addCSourceFiles(&.{"FastNoiseLite.c"}, &.{"-fno-sanitize=undefined"});
+    lib.addCSourceFiles(.{
+        .files = &.{"FastNoiseLite.c"},
+        .flags = &.{"-fno-sanitize=undefined"},
+    });
     lib.linkLibC();
     lib.installHeader("FastNoiseLite.h", "FastNoiseLite.h");
     b.installArtifact(lib);
